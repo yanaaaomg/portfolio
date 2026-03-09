@@ -4,16 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="navbar"></div>
-        <nav>
-            <ul class="ul-navbar">
-                <li><a class="a-nav" href="#domu">Domů</a></li>
-                <li><a class="a-nav" href="#projekty">Projekty</a></li>
-                <li><a class="a-nav" href="#kontakt">Kontakt</a></li>
-            </ul>
-        </nav>
+<nav>
+    <span class="nav-jmeno">Portfolio</span>
+    <ul class="nav-odkazy">
+        <li><a href="#o_mne">O mně</a></li>
+        <li><a href="#projekty">Projekty</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+</nav>
+<section class="uvod">
+    <div class="uvod-obsah">
+        <span class="uvod-stitek">Designer & Illustrator</span>
+        <h1>Tvořím věci,<br>které <em>zaujmou.</em></h1>
+        <p class="uvod-popis">Grafická tvorba a webový design — přístup s důrazem na detail a vizuální identitu.</p>
+        <a href="#projekty" class="uvod-tlacitko">Prohlédnout práce</a>
+    </div>
+</section>
+<section class="o_mne" id="o_mne">
+    <div>
+        <div class="o_mne-nadpis">O mně</div>
+        <h2>Vášeň pro<br>vizuální svět</h2>
+        <p>Jsem designérka se zaměřením na digitální ilustrace a tvorbu webu. Baví mě propojovat estetiku s funkčností — ať už jde o detailní low-poly kresbu nebo celý e-shop.</p>
+        <p>Každý projekt beru jako příležitost vytvořit něco, co nejen dobře vypadá, ale i správně funguje.</p>
+    </div>
+</section>
+<section class="projekty" id="projekty">
+    <div class="projekty-hlavicka">
+        <div>
+            <div class="projekty-nadpis">Moje práce</div>
+            <h2 class="projekty-titulek" style="font-family:'Playfair Display',serif;font-size:clamp(36px,4vw,56px);color:#f5e8d8;">Projekty</h2>
+        </div>
+    </div>
+    <div class="web-projekt" onclick="toggleProject(this)">
+        <div class="web-projekt-hlavicka">
+            <div>
+                <div href="bootstrap/index.html" class="web-projekt-titulek">Bootstrap</div>
+                <div class="web-projekt-typ">E-shop · HTML & CSS</div>
+            </div>
+        </div>
+    </div>
+    <div class="ilustrace-sekce">
+        <div class="ilustrace-nadpis">Digitální tvorba</div>
+        <div class="ilustrace-titulek">Low-poly ilustrace</div>
+        <div class="ilustrace-mrizka">
+            <div class="ilustrace-karta" onclick="openLightbox('fotky/tukan.png', 'Tukan')">
+                <img src="fotky/tukan.png">
+                <div class="ilustrace-prekryti">
+                    <div class="ilustrace-jmeno">Tukan</div>
+                    <div class="ilustrace-podtitulek">Low-poly · Inkscape</div>
+                </div>
+            </div>
+            <div class="ilustrace-karta" onclick="openLightbox('fotky/slunecnice.png', 'Slunečnice')">
+                <img src="fotky/slunecnice.png">
+                <div class="ilustrace-prekryti">
+                    <div class="ilustrace-jmeno">Slunečnice</div>
+                    <div class="ilustrace-podtitulek">Low-poly · Inkscape</div>
+                </div>
+            </div>
+            <div class="ilustrace-karta" onclick="openLightbox('fotky/ptak.png', 'Pták')">
+                <img src="fotky/ptak.png">
+                <div class="ilustrace-prekryti">
+                    <div class="ilustrace-jmeno">Pták</div>
+                    <div class="ilustrace-podtitulek">Low-poly · Inkscape</div>
+                </div>
+            </div>
+            <div class="ilustrace-karta" onclick="openLightbox('fotky/kocka.png', 'Kočka')">
+                <img src="fotky/kocka.png">
+                <div class="ilustrace-prekryti">
+                    <div class="ilustrace-jmeno">Kočka</div>
+                    <div class="ilustrace-podtitulek">Low-poly · Inkscape</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="kontakt" id="kontakt">
+    <div class="kontakt-nadpis">Spojme se</div>
+    <h2>Můj kontakt</h2>
+    <p>Ráda si popovídám o spolupráci, zakázce nebo jen tak o designu. Napiš mi!</p>
+    <a href="mailto:tvuj@email.cz" class="kontakt-email">janasobot@gmail.cz</a>
+</section>
+<footer>
+    <span class="zapati-jmeno">Portfolio</span>
+    <span>© 2025 — Všechna práva vyhrazena</span>
+</footer>
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <span class="lightbox-zavrit" onclick="closeLightbox(event)">×</span>
+    <img id="lightbox-obrazek" src="" alt="">
+</div>
+
+<script>
+    function toggleProject(el) {
+        const body = el.querySelector('.web-projekt-telo');
+        el.classList.toggle('open');
+        body.classList.toggle('open');
+    }
+
+    function openLightbox(src, nazev) {
+        document.getElementById('lightbox-obrazek').src = src;
+        document.getElementById('lightbox').classList.add('active');
+    }
+
+    function closeLightbox(e) {
+        if (e.target === document.getElementById('lightbox') || e.target.classList.contains('lightbox-zavrit')) {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('active');
+    });
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.style.opacity = '1';
+                e.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.about, .web-project, .illu-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+        observer.observe(el);
+    });
+</script>
+
 </body>
 </html>

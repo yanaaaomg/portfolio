@@ -1,19 +1,397 @@
-* {
-    font-family: Georgia, serif;
-    margin: 0;
-}
-html {
-    scroll-behavior: smooth;
-}
-ul {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 6%;
-    font-size: 26px;
-}
-a {
-    text-decoration: none;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #f9f3e8;
+            color: #1a0a0f;
+            overflow-x: hidden;
+        }
+        nav {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 60px;
+            background: rgba(103, 6, 38, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .nav-jmeno {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: #BAD797;
+            letter-spacing: 2px;
+        }
+        .nav-odkazy {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        .nav-odkazy a {
+            text-decoration: none;
+            color: #f0e6d3;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .nav-odkazy a:hover { color: #BAD797; }
+        .uvod {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: #670626;
+        }
+        .uvod-obsah {
+            position: relative;
+            z-index: 2;
+            padding: 0 60px;
+            max-width: 800px;
+            animation: fadeUp 1s ease both;
+        }
+        .uvod-stitek {
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #BAD797;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .uvod h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(56px, 8vw, 100px);
+            color: #f5e8d8;
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+        .uvod h1 em {
+            font-style: italic;
+            color: #BAD797;
+        }
+        .uvod-popis {
+            font-size: 18px;
+            color: #d9c4b8;
+            line-height: 1.7;
+            max-width: 480px;
+            margin-bottom: 50px;
+        }
+        .uvod-tlacitko {
+            display: inline-block;
+            padding: 16px 48px;
+            border: 2px solid #BAD797;
+            color: #BAD797;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+        .uvod-tlacitko:hover {
+            background: #BAD797;
+            color: #670626;
+        }
+        .o_mne {
+            padding: 120px 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            background: #f9f3e8;
+        }
+        .o_mne-nadpis {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #670626;
+            margin-bottom: 16px;
+        }
+        .o_mne h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 4vw, 56px);
+            line-height: 1.15;
+            margin-bottom: 28px;
+            color: #670626;
+        }
+        .o_mne p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #4a3040;
+            margin-bottom: 20px;
+        }
+        .dovednosti-mrizka {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .dovednosti-stitek {
+            padding: 8px 18px;
+            background: #d4edba;
+            color: #670626;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 2px;
+            letter-spacing: 0.5px;
+        }
+        .o_mne-popisek {
+            font-size: 13px;
+            color: #d9c4b8;
+            letter-spacing: 1px;
+            margin-top: 6px;
+        }
+        .projekty {
+            padding: 120px 60px;
+            background: #1a0a0f;
+        }
+        .projekty-hlavicka {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 70px;
+        }
+        .projekty-nadpis {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #BAD797;
+            margin-bottom: 14px;
+        }
+        .projekty h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 4vw, 56px);
+            color: #f5e8d8;
+        }
+        .web-projekt {
+            background: #670626;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .web-projekt:hover { transform: translateY(-4px); }
+        .web-projekt-hlavicka {
+            padding: 28px 36px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .web-projekt-titulek {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            color: #f5e8d8;
+        }
+        .web-projekt-typ {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #BAD797;
+        }
+        .web-projekt-body {
+            display: none;
+            padding: 0 36px 36px;
+        }
+        .web-projekt-body.open { display: block; }
+        .web-projekt-popis {
+            font-size: 15px;
+            color: #d9c4b8;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        .web-projekt-obrazky {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+        .web-projekt-obrazky img {
+            width: 100%;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+        .ilustrace-sekce {
+            padding-top: 60px;
+        }
+        .ilustrace-nadpis {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #BAD797;
+            margin-bottom: 14px;
+        }
+        .ilustrace-titulek {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            color: #f5e8d8;
+            margin-bottom: 36px;
+        }
+        .ilustrace-mrizka {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .ilustrace-karta {
+            background: #2a1520;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: zoom-in;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            position: relative;
+            border: 2px solid transparent;
+        }
+        .ilustrace-karta:hover {
+            transform: scale(1.04);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            border-color: #BAD797;
+        }
+        .ilustrace-karta img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s;
+        }
+        .ilustrace-karta:hover img { opacity: 0.75; }
+        .ilustrace-prekryti {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(103,6,38,0.92));
+            padding: 30px 14px 14px;
+            transform: translateY(8px);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        .ilustrace-karta:hover .ilustrace-prekryti { opacity: 1; transform: translateY(0); }
+        .ilustrace-jmeno {
+            font-family: 'Playfair Display', serif;
+            color: #f5e8d8;
+            font-size: 14px;
+        }
+        .ilustrace-podtitulek {
+            font-size: 10px;
+            color: #BAD797;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+        .ilustrace-prekryti .ilustrace-titulek {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #BAD797;
+            margin-bottom: 0;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10,3,7,0.96);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            cursor: zoom-out;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img {
+            max-width: 82vw;
+            max-height: 82vh;
+            object-fit: contain;
+            border-radius: 4px;
+            border: 1px solid rgba(186,215,151,0.2);
+            cursor: default;
+            animation: lightboxIn 0.25s ease both;
+        }
+        @keyframes lightboxIn {
+            from { opacity: 0; transform: scale(0.93); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+        .lightbox-zavrit {
+            position: absolute;
+            top: 24px; right: 32px;
+            color: #f5e8d8;
+            font-size: 36px;
+            cursor: pointer;
+            font-family: 'Playfair Display', serif;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        .lightbox-zavrit:hover { color: #BAD797; }
+        .kontakt {
+            padding: 120px 60px;
+            background: #d4edba;
+            text-align: center;
+        }
+        .kontakt-nadpis {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #670626;
+            margin-bottom: 16px;
+        }
+        .kontakt h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 5vw, 64px);
+            color: #670626;
+            margin-bottom: 20px;
+        }
+        .kontakt p {
+            font-size: 16px;
+            color: #4a3040;
+            max-width: 480px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+        }
+        .kontakt-email {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #670626;
+            text-decoration: none;
+            border-bottom: 2px solid #670626;
+            padding-bottom: 4px;
+            transition: opacity 0.3s;
+        }
+        .kontakt-email:hover { opacity: 0.7; }
+        footer {
+            background: #670626;
+            padding: 30px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        footer span {
+            color: #d9c4b8;
+            font-size: 13px;
+        }
+        footer .zapati-jmeno {
+            font-family: 'Playfair Display', serif;
+            color: #BAD797;
+            font-size: 16px;
+        }
+
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scrollLine {
+            0%, 100% { transform: scaleX(1); }
+            50%       { transform: scaleX(0.5); }
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 900px) {
+            nav { padding: 16px 30px; }
+            .uvod-obsah { padding: 0 30px; }
+            .o_mne { grid-template-columns: 1fr; padding: 80px 30px; }
+            .projekty { padding: 80px 30px; }
+            .ilustrace-mrizka { grid-template-columns: repeat(2, 1fr); }
+            .kontakt { padding: 80px 30px; }
+            footer { flex-direction: column; gap: 10px; text-align: center; }
+        }
